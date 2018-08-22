@@ -1,0 +1,39 @@
+/*** CONSULTAS ***/
+/* Para Consultar un documento donde se cumpla que el last_updated  sea igual que 1506462556*/
+db.ticker.find({"last_updated" : "1506462556"})
+
+/* Para consultar una informacion donde se cumplan las siguientes dos condiciones  */
+/* que last_updated" sea igual a  "1506462556 */
+/* Y que avaible_supply" sea igual que  "16588625.0 */
+db.ticker.find({"last_updated" : "1506462556" , "avaible_supply" : "16588625.0"})
+
+/* Colocando la funcion pretty()  se presenta la informacion de forma mas legile*/
+db.ticker.find({"last_updated" : "1506462556" , "avaible_supply" : "16588625.0"}).pretty()
+
+/* FindOne() es una funcion que hace lo que find(), pero combinada con la funcion pretty() y un limit 1 */
+db.ticker.findOne({"last_updated" : "1506462556"})
+
+/*Otra forma de hacerlo sería de la siguiente manera:*/
+db.ticker.find({"last_updated" : "1506462556"}).limit(1).pretty()
+
+/* Busca todos los valores que en last_updated sean mayores a  506462510*/
+/* De donde $gt: equivale a mayor que */
+
+db.ticker.find({"last_updated" : {$gt: "1506462556"}}).pretty();
+
+/* Busca todos los valores que en last_updated sean menores a  506462510*/
+/* De donde $lt: equivale a menor que */
+db.ticker.find({"last_updated" : {$lt: "1506462511"}}).pretty()
+
+
+/* Busca todos los valores que en last_updated sean menores o iguales a  506462510*/
+/* De donde $lte: equivale a menor igual que */
+db.ticker.find({"last_updated" : {$lte: "1506462511"}}).pretty()
+
+/* Busca todos los valores que en last_updated sean mayores o iguales a  506462510*/
+/* De donde $gt: equivale a mayor igual que */
+db.ticker.find({"last_updated" : {$gte: "1506462556"}}).limit(3).pretty()
+
+/*Para evitar que se muestren algunos campos de la consulta*/
+/* De donde ,{id: 0,price_btc : 0, rank: 0} sirve para declarar los campos que no mostraremos */
+db.ticker.find({"last_updated" : {$gte: "1506462556"}},{id: 0,price_btc : 0, rank: 0}).limit(2).pretty()

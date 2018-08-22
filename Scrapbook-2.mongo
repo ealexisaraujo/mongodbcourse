@@ -1,0 +1,13 @@
+// /* en este caso el documento tendria nuevos atributos. la variable docuemnto fue el resultado de una consulta */
+// db.NOMBRE_COLECCION.update({"_id" : valor }, documento) 
+
+
+// db.NOMBRE_COLECCION.update({"_id" : valor }, {campoA: 12}) => elimina todos los campos, unicamente mantiene el Id y agrega o actualiza el campoA., es por eso que se debe usar $set
+// db.NOMBRE_COLECCION.update({_id : “algo”},{$set : {nombre: “otro”}}) => actualiza el primero que encuentre con nombre algo y lo pone como otro
+
+// db.NOMBRE_COLECCION.update({_id : “algo”},{$set : {nombre: “otro”}},{multi: true})=> cambia todos los que encuentre
+// db.NOMBRE_COLECCION.update({_id : “algo”},{$set : {nombre: “otro”, edad : 28, campo_nuevo : “valor por defecto”}},{multi: true})=> cambia todos los que encuentre y agrega campo_nuevo
+
+// db.NOMBRE_COLECCION.update({},{$set : {agregando_campo : “valor por defecto”}},{multi: true})=> cambia a TODOS y agrega el nuevo campo
+
+// db.NOMBRE_COLECCION.update({},{$unset : {agregando_campo : 1}},{multi: true})=> unset elimina el campo, agrando_campo: 1 => uno de si, eliminalo
